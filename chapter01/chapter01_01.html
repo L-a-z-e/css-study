@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="KR">
+<head>
+    <meta charset="UTF-8">
+    <title>Box Model Example</title>
+    <style>
+        /* --- 모든 요소에 border-box 적용 (매우 중요!) --- */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 20px; /* body 자체의 기본 마진 제거 및 약간의 여백 */
+            background-color: #f0f0f0;
+        }
+
+        .box {
+            width: 200px; /* border-box 이므로 이게 최종 너비! */
+            height: 100px; /* border-box 이므로 이게 최종 높이! */
+            padding: 20px; /* 안쪽 여백 */
+            border: 5px solid blue; /* 파란색 테두리 */
+            margin: 30px; /* 바깥 여백 (다른 요소와의 간격) */
+            background-color: lightblue; /* 내용 + 패딩 영역 배경색 */
+
+            /* 확인을 위한 텍스트 */
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .content-box-example {
+            box-sizing: content-box; /* 기본값으로 변경해서 비교 */
+            width: 200px; /* 이제 이건 content 너비만 의미 */
+            height: 100px;
+            padding: 20px;
+            border: 5px solid red;
+            margin: 30px;
+            background-color: lightcoral;
+        }
+
+        span {
+            background-color: yellow;
+            padding: 5px;
+            margin: 10px; /* 좌우 마진만 적용됨 */
+            border: 1px solid green;
+        }
+
+    </style>
+</head>
+<body>
+
+<h1>Box Model 이해하기</h1>
+
+<div class="box">
+    Box 1 (border-box)
+    <br>width: 200px
+</div>
+
+<div class="box content-box-example">
+    Box 2 (content-box)
+    <br>width: 200px + padding + border
+</div>
+
+<p>이것은 블록 요소인 단락(paragraph)입니다. <span>이것은 인라인 요소인 span입니다.</span> 인라인 요소는 줄바꿈 없이 이어집니다.<h3>이건 block요소</h3></p>
+
+<div>이것은 블록 요소인 div입니다. 항상 새 줄에서 시작합니다.</div>
+
+</body>
+</html>

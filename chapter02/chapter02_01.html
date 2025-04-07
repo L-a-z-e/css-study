@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Positioning Example</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; }
+        body { height: 1500px; /* 스크롤을 만들기 위한 임시 높이 */ margin: 20px; }
+
+        .container {
+            width: 500px;
+            height: 400px;
+            background-color: #eee;
+            border: 1px solid #ccc;
+            margin-top: 50px;
+            position: relative; /* ✨ Absolute 자식 요소의 기준점이 됨 */
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            color: white;
+            display: flex; /* 글자 가운데 정렬용 */
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .static {
+            position: static; /* 기본값 */
+            background-color: gray;
+        }
+
+        .relative {
+            position: relative;
+            background-color: dodgerblue;
+            /* 원래 위치에서 아래로 20px, 왼쪽으로 30px 이동 */
+            top: 20px;
+            left: 30px;
+            z-index: 1; /* 다른 요소보다 위에 오도록 (예시용) */
+        }
+
+        .absolute {
+            position: absolute;
+            background-color: tomato;
+            /* 기준점(.container)의 오른쪽 위 코너에 배치 */
+            top: 10px;
+            right: 10px;
+            z-index: 2; /* relative 박스보다 위에 오도록 */
+        }
+
+        .fixed {
+            position: fixed;
+            background-color: limegreen;
+            /* 뷰포트의 오른쪽 아래 코너에 배치 */
+            bottom: 20px;
+            right: 20px;
+            z-index: 100; /* 다른 모든 요소 위에 오도록 */
+        }
+
+        .sticky-header {
+            position: sticky;
+            top: 0; /* 화면 상단에 닿으면 고정 */
+            background-color: gold;
+            padding: 20px;
+            margin: 30px;
+            text-align: center;
+            font-weight: bold;
+            border: 1px solid orange;
+            z-index: 50; /* 다른 일반 콘텐츠보다는 위에 오도록 */
+        }
+
+    </style>
+</head>
+<body>
+
+<h1>CSS Positioning 이해하기</h1>
+
+<div class="sticky-header">나는 스티키 헤더! (스크롤 해보세요)</div>
+
+<p>여기는 일반 콘텐츠 영역입니다.</p>
+
+<div class="container">
+    Container (position: relative)
+    <div class="box static">Static</div>
+    <div class="box relative">Relative (top: 20, left: 30)</div>
+    <div class="box absolute">Absolute (top: 10, right: 10)</div>
+</div>
+
+<div class="box fixed">Fixed (bottom: 20, right: 20)</div>
+
+<p>페이지의 나머지 콘텐츠...</p>
+<p>스크롤을 내려보세요.</p>
+
+</body>
+</html>
