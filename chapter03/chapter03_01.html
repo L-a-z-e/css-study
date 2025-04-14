@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Flexbox Navbar Example</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: sans-serif; }
+
+    .navbar {
+      display: flex; /* ✨ Navbar를 Flex Container로 */
+      background-color: #333;
+      padding: 10px 20px;
+
+      /* --- 컨테이너 정렬 --- */
+      /* 주 축(가로) 정렬(현재 flex만 적었으므로 flex-direction은 row => 가로 : 시작(왼쪽)에 로고, 끝(오른쪽)에 메뉴 , 가운데 하나 더 추가를 하면 각각 요소 간격 일정하게 나뉨*/
+      justify-content: space-between;
+      /* 교차 축(세로) 정렬: 아이템들을 세로 중앙에 */
+      align-items: stretch;
+      gap: 20px; /* 아이템 사이 간격 */
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      color: white;
+      font-size: 1.5em;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .menu {
+      list-style: none; /* li 앞의 점 제거 */
+      display: flex; /* ✨ 메뉴 목록 자체도 Flex Container로 (li들을 가로 배치) */
+      gap: 15px; /* 메뉴 아이템(li) 사이 간격 */
+      flex-grow: 1;
+      /*flex-shrink: 1;*/
+    }
+
+    .menu li:nth-child(2) {
+      order: 1;
+    }
+
+    .menu li a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background-color 0.2s;
+    }
+
+    .menu li a:hover {
+      background-color: #555;
+    }
+
+    /* --- 아이템 속성 예시 (선택 사항) --- */
+    .logo {
+      /* flex-grow: 0; flex-shrink: 0; flex-basis: auto; */
+      /* 로고는 크기 고정 */
+    }
+    .menu {
+      /* flex-grow: 1; */ /* 남는 공간을 메뉴가 다 차지하게 하려면 */
+    }
+    .main {
+      border: 1px solid red;
+    }
+
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="#" class="logo">MyLogo</a>
+  <p> 사이 요소 추가 </p>
+  <ul class="menu">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</nav>
+
+<main class="main" style="padding: 20px;">
+  <h1>페이지 콘텐츠</h1>
+  <p>Flexbox로 만든 네비게이션 바 아래의 내용입니다.</p>
+</main>
+
+</body>
+</html>
