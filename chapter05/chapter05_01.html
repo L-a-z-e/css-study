@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- ✨ 뷰포트 설정! -->
+  <title>Responsive Layout Example</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: sans-serif; background-color: #f4f4f4; padding: 1rem; } /* rem 단위 사용 */
+
+    .card-container {
+      display: grid; /* Grid 사용 */
+      /* 기본(모바일): 1개 열, 전체 너비 사용 */
+      grid-template-columns: 1fr;
+      gap: 1rem; /* rem 단위 간격 */
+      max-width: 1200px; /* 최대 너비 제한 */
+      margin: 0 auto; /* 가운데 정렬 */
+    }
+
+    .card {
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1.5rem; /* rem 단위 패딩 */
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .card h2 {
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+    }
+
+    .card p {
+      font-size: 1rem; /* 기본 폰트 크기 (html의 폰트 크기 기준) */
+      line-height: 1.6;
+    }
+
+    /* --- 미디어 쿼리 --- */
+
+    /* 작은 태블릿 크기 이상 (예: 600px 이상) */
+    @media (min-width: 600px) {
+      .card-container {
+        /* 2개의 동일한 너비의 열 */
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* 일반 데스크탑 크기 이상 (예: 900px 이상) */
+    @media (min-width: 900px) {
+      body {
+        padding: 2rem; /* 화면이 크면 패딩 더 주기 */
+      }
+      .card-container {
+        /* 3개의 동일한 너비의 열 */
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem; /* 간격도 조금 더 넓게 */
+      }
+      .card p {
+        font-size: 1.1rem; /* 화면이 크면 폰트 약간 키우기 */
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+<h1>Responsive Card Layout</h1>
+
+<div class="card-container">
+  <div class="card">
+    <h2>Card 1</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio.</p>
+  </div>
+  <div class="card">
+    <h2>Card 2</h2>
+    <p>Praesent libero. Sed cursus ante dapibus diam. Sed nisi.</p>
+  </div>
+  <div class="card">
+    <h2>Card 3</h2>
+    <p>Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum.</p>
+  </div>
+  <div class="card">
+    <h2>Card 4</h2>
+    <p>Praesent mauris. Fusce nec tellus sed augue semper porta.</p>
+  </div>
+  <div class="card">
+    <h2>Card 5</h2>
+    <p>Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti.</p>
+  </div>
+  <div class="card">
+    <h2>Card 6</h2>
+    <p>Sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+  </div>
+</div>
+
+</body>
+</html>
