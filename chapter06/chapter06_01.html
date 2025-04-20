@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holy Grail Layout Example</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            height: 100vh; /* Grid 높이 기준 */
+        }
+
+        .holy-grail-layout {
+            display: grid;
+            height: 100%; /* 부모 높이 전체 사용 */
+            /* ✨ Grid로 전체 구조 정의 */
+            grid-template-areas:
+      "header header header"
+      "nav    main   aside"
+      "footer footer footer";
+            /* 행 높이: 헤더 60px, 푸터 40px, 중간 영역(nav, main, aside)은 남은 공간 모두 */
+            grid-template-rows: 60px 1fr 40px;
+            /* 열 너비: 좌측 nav 200px, 우측 aside 150px, 중앙 main은 남은 공간 모두 */
+            grid-template-columns: 200px 1fr 150px;
+            gap: 10px; /* 영역 사이 간격 */
+        }
+
+        /* 각 영역에 이름 할당 */
+        .header {
+            grid-area: header;
+            background-color: lightcoral;
+            padding: 10px;
+        }
+
+        .nav {
+            grid-area: nav;
+            background-color: lightblue;
+            padding: 10px;
+        }
+
+        .main {
+            grid-area: main;
+            background-color: lightgoldenrodyellow;
+            padding: 10px;
+            overflow-y: auto; /* 내용 많으면 스크롤 */
+        }
+
+        .aside {
+            grid-area: aside;
+            background-color: lightgreen;
+            padding: 10px;
+        }
+
+        .footer {
+            grid-area: footer;
+            background-color: lightsalmon;
+            padding: 10px;
+        }
+
+        /* --- Flexbox 조합 예시: Header 내부 --- */
+        .header {
+            display: flex; /* ✨ Header 내부 요소 정렬 위해 Flexbox 사용 */
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: bold;
+        }
+
+        .header-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 15px;
+        }
+
+        /* --- 반응형 처리 예시 --- */
+        @media (max-width: 768px) {
+            .holy-grail-layout {
+                grid-template-areas: "header"
+                "nav"
+                "main"
+                "aside"
+                "footer";
+                grid-template-rows: auto auto 1fr auto auto; /* 높이 자동 조절 */
+                grid-template-columns: 1fr; /* 열은 하나 */
+            }
+
+            /* 모바일에서는 nav, aside 너비 제한 해제 등 추가 스타일 필요 */
+        }
+
+    </style>
+</head>
+<body>
+<div class="holy-grail-layout">
+    <header class="header">
+        <div class="logo">My Site</div>
+        <nav class="header-nav">
+            <ul>
+                <li><a href="#">Link 1</a></li>
+                <li><a href="#">Link 2</a></li>
+            </ul>
+        </nav>
+    </header>
+    <nav class="nav">Left Nav</nav>
+    <main class="main">Main Content Area...</main>
+    <aside class="aside">Right Sidebar</aside>
+    <footer class="footer">Footer</footer>
+</div>
+</body>
+</html>
